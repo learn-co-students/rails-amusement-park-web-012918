@@ -15,9 +15,14 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <% if logged_in? %>
+              <% user = User.find(current_user)%>
+              <span class="icon-bar"><%= user.name %></span>
+              <% if user.admin == true %>
+              <span class="icon-bar">ADMIN</span>
+              <% end %>
+              <span class="icon-bar"><%= %></span>
+            <% end %>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         </div>
